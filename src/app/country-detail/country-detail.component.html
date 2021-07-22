@@ -1,4 +1,4 @@
-<div class="country">
+<div class="country" *ngIf="country && weather">
   <p>Name: {{ country.name }}</p>
   <p>Capital: {{ country.capital }}</p>
   <p>Population: {{ country.population }}</p>
@@ -6,6 +6,7 @@
   <ul class="country__languages">
     <li class="country__lang" *ngFor="let lang of country.languages">
       {{ lang.name }}
+      {{ lang.iso639_1 }}
     </li>
   </ul>
   <img class="country__flag" [src]="country.flag" [alt]="country.name" />

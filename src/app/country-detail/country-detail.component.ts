@@ -11,7 +11,7 @@ import { CountryService } from '../country.service';
 })
 export class CountryDetailComponent implements OnInit {
   country!: Country;
-  weather?: any = {};
+  weather?: any;
 
   constructor(
     private countryService: CountryService,
@@ -25,17 +25,16 @@ export class CountryDetailComponent implements OnInit {
 
   getCountry(): void {
     const id = String(this.route.snapshot.paramMap.get('id'));
-    this.countryService.getCountry(id).subscribe((c) => {
-      this.country = c;
-      this.getWeather();
+    this.countryService.getCountry(id).subscribe((country) => {
+      this.getWeather(country.capital);
+      return (this.country = country);
     });
   }
 
-  getWeather(): void {
-    const capital = this.country.capital;
-    this.countryService
-      .getWeather(capital)
-      .subscribe((w) => (this.weather = w));
+  getWeather(capital: string): void {
+    this.countryService.getWeather(capital).subscribe((weather) => {
+      return (this.weather = weather.current);
+    });
   }
 
   goBack(): void {
