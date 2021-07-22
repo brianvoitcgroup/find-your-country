@@ -1,0 +1,21 @@
+<div class="country">
+  <p>Name: {{ country.name }}</p>
+  <p>Capital: {{ country.capital }}</p>
+  <p>Population: {{ country.population }}</p>
+  <p>Spoken languages</p>
+  <ul class="country__languages">
+    <li class="country__lang" *ngFor="let lang of country.languages">
+      {{ lang.name }}
+    </li>
+  </ul>
+  <img class="country__flag" [src]="country.flag" [alt]="country.name" />
+
+  <h4>Weather in {{ country.capital }}</h4>
+  <p>temperature: {{ weather.temp_c }} Celcius</p>
+  <img [src]="weather.condition.icon" [alt]="weather.condition.text" />
+  <p>wind: {{ weather.wind_kph }} direction {{ weather.wind_dir }}</p>
+
+  <br />
+
+  <button (click)="goBack()">Back</button>
+</div>

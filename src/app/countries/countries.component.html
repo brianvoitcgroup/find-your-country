@@ -1,0 +1,21 @@
+<div class="search-area">
+  <label class="search-area__label" for="search-box">Search</label>
+  <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+  <ng-template #more class="search-area__notification">
+    <p>Please be more specific</p>
+  </ng-template>
+</div>
+<div class="countries">
+  <ul class="countries__list" *ngIf="countries.length <= 10; else more">
+    <li class="countries__item" *ngFor="let country of countries">
+      <a class="countries__link" routerLink="/detail/{{ country.id }}">
+        <img
+          class="countries__flag"
+          [src]="country.flag"
+          [alt]="country.name"
+        />
+        <span class="countries__name">{{ country.name }}</span>
+      </a>
+    </li>
+  </ul>
+</div>
