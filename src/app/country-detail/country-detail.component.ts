@@ -11,7 +11,6 @@ import { CountryService } from '../country.service';
 })
 export class CountryDetailComponent implements OnInit {
   country!: Country;
-  weather?: any;
 
   constructor(
     private countryService: CountryService,
@@ -26,14 +25,7 @@ export class CountryDetailComponent implements OnInit {
   getCountry(): void {
     const id = String(this.route.snapshot.paramMap.get('id'));
     this.countryService.getCountry(id).subscribe((country) => {
-      this.getWeather(country.capital);
       return (this.country = country);
-    });
-  }
-
-  getWeather(capital: string): void {
-    this.countryService.getWeather(capital).subscribe((weather) => {
-      return (this.weather = weather.current);
     });
   }
 

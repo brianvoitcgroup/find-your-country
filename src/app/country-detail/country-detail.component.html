@@ -1,4 +1,4 @@
-<div class="country" *ngIf="country && weather">
+<div class="country" *ngIf="country">
   <p>Name: {{ country.name }}</p>
   <p>Capital: {{ country.capital }}</p>
   <p>Population: {{ country.population }}</p>
@@ -6,17 +6,9 @@
   <ul class="country__languages">
     <li class="country__lang" *ngFor="let lang of country.languages">
       {{ lang.name }}
-      {{ lang.iso639_1 }}
     </li>
   </ul>
   <img class="country__flag" [src]="country.flag" [alt]="country.name" />
-
-  <h4>Weather in {{ country.capital }}</h4>
-  <p>temperature: {{ weather.temp_c }} Celcius</p>
-  <img [src]="weather.condition.icon" [alt]="weather.condition.text" />
-  <p>wind: {{ weather.wind_kph }} direction {{ weather.wind_dir }}</p>
-
-  <br />
-
-  <button (click)="goBack()">Back</button>
+  <app-weather [capital]="country.capital"></app-weather>
 </div>
+<button (click)="goBack()">Back</button>
