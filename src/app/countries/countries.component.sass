@@ -1,0 +1,49 @@
+.search-area
+  margin: 10px
+  margin-bottom: 50px
+
+.search-area__label
+  margin-right: 10px
+
+.search-area #search-box
+  width: 300px
+  height: 30px
+
+.countries__list
+  margin: auto
+  padding-left: 0
+  list-style-type: none
+  display: grid
+  grid-template-columns: 33% 33% 33%
+
+.countries__item
+  margin-bottom: 20px
+  text-align: center
+  background-color: #c5ccd4
+  padding-top: 15px
+  padding-bottom: 10px
+  margin-left: 10px
+  margin-right: 10px
+  transition: background-color 0.5s
+
+  &:hover
+    background-color: gray
+
+.countries__link
+  display: inline-block
+  color: black
+  text-decoration: none
+
+  &:hover
+    color: white
+
+.countries__flag
+  width: 20vw
+
+.countries__name
+  display: block
+  margin-top: 10px
+
+@media screen and (max-width: 400px)
+  .countries__name
+    font-size: 10px

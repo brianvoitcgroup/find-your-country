@@ -1,0 +1,14 @@
+<div class="country" *ngIf="country">
+  <p>Name: {{ country.name }}</p>
+  <p>Capital: {{ country.capital }}</p>
+  <p>Population: {{ country.population }}</p>
+  <p>Spoken languages</p>
+  <ul class="country__languages">
+    <li class="country__lang" *ngFor="let lang of country.languages">
+      {{ lang.name }}
+    </li>
+  </ul>
+  <img class="country__flag" [src]="country.flag" [alt]="country.name" />
+  <app-weather [capital]="country.capital"></app-weather>
+</div>
+<button (click)="goBack()">Back</button>
