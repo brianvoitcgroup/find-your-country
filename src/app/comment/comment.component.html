@@ -1,0 +1,32 @@
+<div class="comments" *ngIf="comments">
+  <form
+    class="comments__form"
+    [formGroup]="commentForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <textarea
+      class="comments__textarea"
+      name="comment"
+      formControlName="comment"
+      cols="30"
+      rows="5"
+      placeholder="Write a comment..."
+      required
+    ></textarea>
+    <button
+      class="comments__submit-btn"
+      type="submit"
+      [disabled]="!commentForm.valid"
+    >
+      <i class="las la-paper-plane la-2x"></i>
+    </button>
+  </form>
+
+  <ul class="comments__list">
+    <li class="comments__item" *ngFor="let comment of comments">
+      <p>{{ comment.content }}</p>
+    </li>
+    <button><i class="las la-edit"></i></button>
+    <button><i class="las la-eraser"></i></button>
+  </ul>
+</div>

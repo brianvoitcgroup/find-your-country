@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Location } from '@angular/common';
 import { Country } from '../country.model';
 import { CountryService } from '../country.service';
@@ -25,7 +26,7 @@ export class CountryDetailComponent implements OnInit {
   getCountry(): void {
     const id = String(this.route.snapshot.paramMap.get('id'));
     this.countryService.getCountry(id).subscribe((country) => {
-      return (this.country = country);
+      this.country = country;
     });
   }
 

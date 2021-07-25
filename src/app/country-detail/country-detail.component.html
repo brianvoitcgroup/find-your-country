@@ -9,6 +9,7 @@
     </li>
   </ul>
   <img class="country__flag" [src]="country.flag" [alt]="country.name" />
-  <app-weather [capital]="country.capital"></app-weather>
+  <!-- <app-weather [capital]="country.capital"></app-weather> -->
+  <app-comment [countryId]="country.id"></app-comment>
 </div>
 <button (click)="goBack()">Back</button>
