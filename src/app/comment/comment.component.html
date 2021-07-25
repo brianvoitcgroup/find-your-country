@@ -25,8 +25,12 @@
   <ul class="comments__list">
     <li class="comments__item" *ngFor="let comment of comments">
       <p>{{ comment.content }}</p>
+      <button title="Edit comment (unavailable)" disabled="true">
+        <i class="las la-edit"></i>
+      </button>
+      <button (click)="deleteComment(comment.id)" title="Delete comment">
+        <i class="las la-eraser"></i>
+      </button>
     </li>
-    <button><i class="las la-edit"></i></button>
-    <button><i class="las la-eraser"></i></button>
   </ul>
 </div>

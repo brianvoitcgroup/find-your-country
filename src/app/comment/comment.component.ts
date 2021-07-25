@@ -33,6 +33,17 @@ export class CommentComponent implements OnInit {
   onSubmit(): void {
     this.commentService
       .postComment(this.countryId, this.commentForm.controls.comment.value)
-      .subscribe((comment) => this.comments.push(comment));
+      .subscribe((comment) => {
+        this.commentForm.reset();
+        this.comments.push(comment);
+      });
+  }
+
+  deleteComment(commentId: string): void {
+    this.commentService.deleteComment(commentId).subscribe(() => {
+      this.comments = this.comments.filter(
+        (comment) => commentId !== comment.id
+      );
+    });
   }
 }

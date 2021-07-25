@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class CommentService {
-  baseUrl = 'http://localhost:3002/api/countries';
+  baseUrl = 'http://localhost:3002/api';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -25,13 +25,23 @@ export class CommentService {
 
   getComments(id: string): Observable<any> {
     return this.http
-      .get<any>(`${this.baseUrl}/${id}`)
+      .get<any>(`${this.baseUrl}/countries/${id}`)
       .pipe(catchError(this.handleError<any>('getComments', [])));
   }
 
   postComment(id: string, comment: string): Observable<any> {
     return this.http
-      .post<any>(`${this.baseUrl}/${id}`, { comment }, this.httpOptions)
+      .post<any>(
+        `${this.baseUrl}/countries/${id}`,
+        { comment },
+        this.httpOptions
+      )
       .pipe(catchError(this.handleError<any>('postComment')));
+  }
+
+  deleteComment(commentId: string): Observable<any> {
+    return this.http
+      .delete<any>(`${this.baseUrl}/comments/${commentId}`)
+      .pipe(catchError(this.handleError<any>('deleteComment')));
   }
 }

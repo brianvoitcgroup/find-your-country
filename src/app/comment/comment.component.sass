@@ -6,15 +6,30 @@
 
 .comments__textarea
   resize: none
+  margin: 0
+  border: solid 1px black
   border-right-width: 0
 
 .comments__submit-btn
   position: absolute
   height: 100%
+  border: solid 1px black
+  border-left-width: 0
+  transition: color 0.5s
+  transition: background-color 0.5s
+
+  &:hover:enabled
+    background-color: gray
+    color: white
+
+  &:disabled
+    color: gray
+    background-color: #f1f1f1
 
 .comments__list
   list-style-type: none
-  width: 20%
 
 .comments__item
+  margin-top: 5px
   border: solid 1px
+  max-width: 20%
