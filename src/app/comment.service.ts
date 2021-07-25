@@ -7,10 +7,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class CommentService {
-  baseUrl = 'http://localhost:3002/api';
+  baseUrl = 'https://evening-island-76065.herokuapp.com/api';
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin':
+        'https://evening-island-76065.herokuapp.com',
+    }),
   };
 
   private handleError<T>(operation = 'operation', result?: T) {
@@ -25,7 +29,7 @@ export class CommentService {
 
   getComments(id: string): Observable<any> {
     return this.http
-      .get<any>(`${this.baseUrl}/countries/${id}`)
+      .get<any>(`${this.baseUrl}/countries/${id}`, this.httpOptions)
       .pipe(catchError(this.handleError<any>('getComments', [])));
   }
 
@@ -41,7 +45,7 @@ export class CommentService {
 
   deleteComment(commentId: string): Observable<any> {
     return this.http
-      .delete<any>(`${this.baseUrl}/comments/${commentId}`)
+      .delete<any>(`${this.baseUrl}/comments/${commentId}`, this.httpOptions)
       .pipe(catchError(this.handleError<any>('deleteComment')));
   }
 }
